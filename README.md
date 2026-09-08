@@ -1,6 +1,6 @@
 # Courtly — Sports Facility Booking (React Native + Expo + TypeScript)
 
-Courtly lets users browse sports facilities, check court availability, book hourly slots (07:00–22:00), and manage their bookings — with secure auth, persistent sessions, and add-to-calendar support.
+Courtly is a mobile application built with React Native + Expo + TypeScript for discovering sports facilities, checking real-time hourly court availability, and reserving court slots.
 
 - **API base URL:** `https://courtly-api.hyge.web.id`
 - **API docs (Swagger):** `https://courtly-api.hyge.web.id/api/docs`
@@ -133,6 +133,6 @@ app.json                 # Expo config (router, calendar + SecureStore plugins, 
 
 ## Notes / Assumptions
 
-- Availability slots come entirely from the API (`price`, `available` per hour); the UI renders exactly what the server returns for 07:00–22:00.
+- Availability slots come entirely from the API (`price`, `available` per hour)
 - Booking payload sends the full consecutive range as `{ courtId, date, startTime, endTime }`.
 - Booking list filter maps 1:1 to the API `status` query (`UPCOMING`/`PAST`/`CANCELLED`).
