@@ -1,0 +1,44 @@
+{
+  "expo": {
+    "name": "Courtly",
+    "slug": "courtly-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "scheme": "courtly",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "backgroundColor": "#0B1220"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCalendarsUsageDescription": "Courtly saves your confirmed court bookings to your device calendar.",
+        "NSCalendarsFullAccessUsageDescription": "Courtly saves your confirmed court bookings to your device calendar."
+      }
+    },
+    "android": {
+      "package": "com.courtly.mobile",
+      "permissions": [
+        "READ_CALENDAR",
+        "WRITE_CALENDAR"
+      ]
+    },
+    "web": {
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      [
+        "expo-calendar",
+        {
+          "calendarAccessPermission": "Allow Courtly to save your bookings to your calendar."
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
