@@ -2,7 +2,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Image } from 'expo-image';
 import * as Haptics from 'expo-haptics';
 import { router } from 'expo-router';
-import { theme, formatIDR } from '../theme';
+import { theme, formatIDR } from '../utils';
 import type { FacilitySummary } from '../types';
 
 export function FacilityCard({ item }: { item: FacilitySummary }) {

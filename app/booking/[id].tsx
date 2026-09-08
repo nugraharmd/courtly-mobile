@@ -8,7 +8,7 @@ import { cancelBooking, fetchBookingDetail } from '../../src/api/courtly';
 import { getApiErrorMessage } from '../../src/api/client';
 import { ErrorState, Loading } from '../../src/components/ui';
 import { StatusPill } from '../(tabs)/bookings';
-import { formatDateLabel, formatIDR, theme } from '../../src/theme';
+import { formatDateLabel, formatIDR, theme } from '../../src/utils';
 
 export default function BookingDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();

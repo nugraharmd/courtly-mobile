@@ -131,7 +131,7 @@ src/
   components/FacilityCard.tsx
   components/ui.tsx      # Screen/Loading/Error/Empty states
   components/BackButton.tsx # reusable circular back button (no text), used on facility detail
-  theme.ts               # colors, IDR/date helpers, slot math
+  utils.ts               # theme (colors, radius) + shared helpers: IDR/date formatting, slot math
   types.ts               # API DTOs
 app.json                 # Expo config (router, calendar + SecureStore plugins, permissions)
 ```

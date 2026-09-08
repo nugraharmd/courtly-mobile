@@ -6,7 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Link } from 'expo-router';
 import * as Haptics from 'expo-haptics';
 import { useAuthStore } from '../../src/store/auth-store';
-import { theme } from '../../src/theme';
+import { theme } from '../../src/utils';
 
 const schema = z.object({
   email: z.string().email('Enter a valid email'),

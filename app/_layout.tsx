@@ -4,7 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useAuthStore } from '../src/store/auth-store';
-import { theme } from '../src/theme';
+import { theme } from '../src/utils';
 
 const queryClient = new QueryClient({
   defaultOptions: {

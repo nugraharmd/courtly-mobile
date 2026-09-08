@@ -1,7 +1,7 @@
 import { Alert, Pressable, StyleSheet, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAuthStore } from '../../src/store/auth-store';
-import { theme } from '../../src/theme';
+import { theme } from '../../src/utils';
 
 export default function ProfileScreen() {
   const { user, signOut } = useAuthStore();

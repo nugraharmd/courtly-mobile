@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
-import { theme } from '../theme';
+import { theme } from '../utils';
 
 export function Screen({ children }: { children: ReactNode }) {
   return <View style={styles.screen}>{children}</View>;

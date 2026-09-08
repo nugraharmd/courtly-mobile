@@ -5,7 +5,7 @@ import { fetchCities, fetchFacilities, fetchSports } from '../../src/api/courtly
 import { getApiErrorMessage } from '../../src/api/client';
 import { FacilityCard } from '../../src/components/FacilityCard';
 import { EmptyState, ErrorState, Loading } from '../../src/components/ui';
-import { theme } from '../../src/theme';
+import { theme } from '../../src/utils';
 
 const PAGE_SIZE = 10;
 

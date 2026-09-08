@@ -8,7 +8,7 @@ import { fetchFacilityDetail } from '../../src/api/courtly';
 import { getApiErrorMessage } from '../../src/api/client';
 import { ErrorState, Loading } from '../../src/components/ui';
 import { BackButton } from '../../src/components/BackButton';
-import { formatIDR, theme } from '../../src/theme';
+import { formatIDR, theme } from '../../src/utils';
 
 export default function FacilityDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
