@@ -44,7 +44,7 @@ export interface FacilityCourt {
 export interface FacilityDetail {
   id: string;
   name: string;
-  description: string;
+  description: string | null | undefined;
   address: string;
   rating: number;
   reviewCount: number;

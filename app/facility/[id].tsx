@@ -7,6 +7,7 @@ import * as Haptics from 'expo-haptics';
 import { fetchFacilityDetail } from '../../src/api/courtly';
 import { getApiErrorMessage } from '../../src/api/client';
 import { ErrorState, Loading } from '../../src/components/ui';
+import { BackButton } from '../../src/components/BackButton';
 import { formatIDR, theme } from '../../src/theme';
 
 export default function FacilityDetailScreen() {
@@ -16,16 +17,21 @@ export default function FacilityDetailScreen() {
   if (q.isPending) return <Loading label="Loading facility…" />;
   if (q.isError || !q.data) return <ErrorState message={getApiErrorMessage(q.error)} onRetry={() => q.refetch()} />;
   const f = q.data;
+  const description =
+    typeof f.description === 'string' && f.description.trim() !== '' ? f.description : '-';
 
   return (
     <View style={styles.wrap}>
       <ScrollView contentContainerStyle={styles.scroll}>
-        <Image source={{ uri: f.imageUrl }} style={styles.image} contentFit="cover" />
+        <View style={styles.imageWrap}>
+          <Image source={{ uri: f.imageUrl }} style={styles.image} contentFit="cover" />
+          <BackButton style={styles.backBtn} />
+        </View>
         <View style={styles.body}>
           <Text style={styles.name}>{f.name}</Text>
           <Text style={styles.addr}>{f.address}</Text>
           <Text style={styles.rating}>★ {f.rating.toFixed(1)} · {f.reviewCount} reviews</Text>
-          <Text style={styles.desc}>{f.description}</Text>
+          <Text style={styles.desc}>{description}</Text>
 
           <Text style={styles.h}>Sports</Text>
           <View style={styles.row}>
@@ -72,6 +78,8 @@ export default function FacilityDetailScreen() {
 const styles = StyleSheet.create({
   wrap: { flex: 1, backgroundColor: theme.colors.bg },
   scroll: { paddingBottom: 100 },
+  imageWrap: { position: 'relative' },
+  backBtn: { position: 'absolute', top: 48, left: 16 },
   image: { width: '100%', height: 230, backgroundColor: theme.colors.surface },
   body: { padding: 16, gap: 6 },
   name: { color: theme.colors.text, fontSize: 22, fontWeight: '900' },

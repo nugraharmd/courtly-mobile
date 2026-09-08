@@ -27,6 +27,10 @@ Courtly is a mobile application built with React Native + Expo + TypeScript for 
 | `expo-calendar` | "Add to calendar" on booking detail — requests permission, picks a writable calendar, and creates an event with facility/court/date/time + booking reference. Android `READ/WRITE_CALENDAR` + iOS usage descriptions are configured in `app.json`. |
 | `expo-linear-gradient` | Branded gradients on auth hero, login/register CTA, booking CTA, and profile header. |
 
+## Build / Download
+
+EAS build: `...`  
+
 ## Project Setup
 
 ### Prerequisites
@@ -126,6 +130,7 @@ src/
   store/auth-store.ts    # zustand auth + SecureStore persistence
   components/FacilityCard.tsx
   components/ui.tsx      # Screen/Loading/Error/Empty states
+  components/BackButton.tsx # reusable circular back button (no text), used on facility detail
   theme.ts               # colors, IDR/date helpers, slot math
   types.ts               # API DTOs
 app.json                 # Expo config (router, calendar + SecureStore plugins, permissions)

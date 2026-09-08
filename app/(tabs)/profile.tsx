@@ -1,10 +1,17 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Alert, Pressable, StyleSheet, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAuthStore } from '../../src/store/auth-store';
 import { theme } from '../../src/theme';
 
 export default function ProfileScreen() {
   const { user, signOut } = useAuthStore();
+
+  function confirmLogout() {
+    Alert.alert('Log out?', 'Are you sure you want to log out?', [
+      { text: 'Cancel', style: 'cancel' },
+      { text: 'Log out', style: 'destructive', onPress: () => void signOut() },
+    ]);
+  }
   return (
     <View style={styles.wrap}>
       <LinearGradient colors={['#15803D', '#0B1220']} style={styles.hero}>
@@ -15,7 +22,7 @@ export default function ProfileScreen() {
         <Text style={styles.email}>{user?.email ?? '—'}</Text>
       </LinearGradient>
       <View style={styles.body}>
-        <Pressable onPress={() => void signOut()} style={styles.outBtn}>
+        <Pressable onPress={confirmLogout} style={styles.outBtn}>
           <Text style={styles.outText}>Log out</Text>
         </Pressable>
       </View>
