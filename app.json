@@ -12,16 +12,14 @@
       "**/*"
     ],
     "ios": {
-      "icon": "./assets/images/icon.png",
-      "supportsTablet": true,
-      "bundleIdentifier": "app.courtly.mobile"
+      "icon": "./assets/images/icon.png"
     },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#FFE047",
         "foregroundImage": "./assets/images/adaptive-icon.png"
       },
-      "package": "app.courtly.mobile",
+      "package": "com.courtly.app",
       "permissions": [
         "android.permission.READ_CALENDAR",
         "android.permission.WRITE_CALENDAR"
