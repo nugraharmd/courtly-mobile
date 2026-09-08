@@ -111,29 +111,25 @@ Pagination shape: `{ data, pagination: { page, limit, total, totalPages } }`. Th
 ## Project Structure
 
 ```
-app/
-  _layout.tsx            # QueryClient, SafeArea, AuthGate (session restore + route guard)
-  index.tsx              # root redirect
-  (auth)/_layout.tsx     # auth stack
-  (auth)/login.tsx       # RHF+Zod login
-  (auth)/register.tsx    # RHF+Zod register
-  (tabs)/_layout.tsx     # bottom tabs
-  (tabs)/index.tsx       # explore: search/filter/infinite scroll
-  (tabs)/bookings.tsx    # upcoming/past/cancelled
-  (tabs)/profile.tsx     # user + logout
-  facility/[id].tsx      # facility detail
-  facility/[id]/book.tsx # availability + booking
-  booking/[id].tsx       # booking detail, cancel, calendar
-src/
-  api/client.ts          # axios + token + 401 handling
-  api/courtly.ts         # typed endpoint wrappers
-  store/auth-store.ts    # zustand auth + SecureStore persistence
-  components/FacilityCard.tsx
-  components/ui.tsx      # Screen/Loading/Error/Empty states
-  components/BackButton.tsx # reusable circular back button (no text), used on facility detail
-  utils.ts               # theme (colors, radius) + shared helpers: IDR/date formatting, slot math
-  types.ts               # API DTOs
-app.json                 # Expo config (router, calendar + SecureStore plugins, permissions)
+app/                  # Expo Router screens (file-based routing)
+  (auth)/             # Login & register screens
+  (tabs)/             # Bottom-tab screens (explore, bookings, profile)
+  facility/           # Facility detail & booking flow
+  booking/            # Booking detail screen
+src/                  # Shared app logic (non-route code)
+  api/                # Axios client + typed API wrappers
+  components/         # Reusable UI components
+  store/              # Zustand auth state + persistence
+assets/               # Static images & icons
+  images/             # App icon, adaptive icon, splash
+releases/             # Built APK output from EAS
+.env.example          # Example env vars (API base URL)
+app.json              # Expo config (name, icons, plugins, permissions)
+babel.config.js       # Babel preset for Expo
+eas.json              # EAS build profiles
+package.json          # Dependencies & npm scripts
+package-lock.json     # Locked dependency versions
+tsconfig.json         # TypeScript config & path alias
 ```
 
 ## Notes / Assumptions
