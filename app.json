@@ -1,44 +1,64 @@
 {
   "expo": {
     "name": "Courtly",
+    "owner": "nugraharmd",
     "slug": "courtly-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images/icon.png",
     "scheme": "courtly",
-    "userInterfaceStyle": "automatic",
-    "splash": {
-      "backgroundColor": "#0B1220"
-    },
+    "userInterfaceStyle": "light",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
+      "icon": "./assets/images/icon.png",
       "supportsTablet": true,
-      "infoPlist": {
-        "NSCalendarsUsageDescription": "Courtly saves your confirmed court bookings to your device calendar.",
-        "NSCalendarsFullAccessUsageDescription": "Courtly saves your confirmed court bookings to your device calendar."
-      }
+      "bundleIdentifier": "app.courtly.mobile"
     },
     "android": {
-      "package": "com.courtly.mobile",
+      "adaptiveIcon": {
+        "backgroundColor": "#FFE047",
+        "foregroundImage": "./assets/images/adaptive-icon.png"
+      },
+      "package": "app.courtly.mobile",
       "permissions": [
-        "READ_CALENDAR",
-        "WRITE_CALENDAR"
+        "android.permission.READ_CALENDAR",
+        "android.permission.WRITE_CALENDAR"
       ]
     },
     "web": {
-      "bundler": "metro"
+      "favicon": "./assets/favicon.png",
+      "output": "static"
     },
     "plugins": [
-      "expo-router",
-      "expo-secure-store",
       [
         "expo-calendar",
         {
-          "calendarAccessPermission": "Allow Courtly to save your bookings to your calendar."
+          "calendarPermission": "Courtly needs calendar access to save your court bookings."
+        }
+      ],
+      "expo-image",
+      "expo-router",
+      "expo-secure-store",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#0B0F0C",
+          "image": "./assets/images/splash.png",
+          "imageWidth": 76
         }
       ]
     ],
     "experiments": {
-      "typedRoutes": true
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "983c4588-2b98-4108-84d0-e1a51f09e18e"
+      },
+      "router": {}
     }
   }
 }
