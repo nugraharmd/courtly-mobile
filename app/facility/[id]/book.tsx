@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
   slotPrice: { color: theme.colors.muted, fontSize: 11 },
   slotBookedText: { color: theme.colors.danger },
   slotSelText: { color: '#fff' },
-  footer: { position: 'absolute', bottom: 0, left: 0, right: 0, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 16, backgroundColor: 'rgba(11,18,32,0.95)', borderTopWidth: 1, borderTopColor: theme.colors.border },
+  footer: { position: 'absolute', bottom: 0, left: 0, right: 0, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 16, backgroundColor: 'rgba(255,255,255,0.97)', borderTopWidth: 1, borderTopColor: theme.colors.border },
   sumLabel: { color: theme.colors.muted, fontSize: 12 },
   sumTotal: { color: theme.colors.text, fontWeight: '900', fontSize: 18 },
   bookBtn: { paddingHorizontal: 28, paddingVertical: 14, borderRadius: 12 },

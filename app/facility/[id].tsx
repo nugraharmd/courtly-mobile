@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useLocalSearchParams, router } from 'expo-router';
 import { useQuery } from '@tanstack/react-query';
@@ -8,10 +9,11 @@ import { fetchFacilityDetail } from '../../src/api/courtly';
 import { getApiErrorMessage } from '../../src/api/client';
 import { ErrorState, Loading } from '../../src/components/ui';
 import { BackButton } from '../../src/components/BackButton';
-import { formatIDR, theme } from '../../src/utils';
+import { formatIDR, resolveFacilityImage, theme } from '../../src/utils';
 
 export default function FacilityDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
+  const [imgFailed, setImgFailed] = useState(false);
   const q = useQuery({ queryKey: ['facility', id], queryFn: () => fetchFacilityDetail(id!), enabled: !!id });
 
   if (q.isPending) return <Loading label="Loading facility…" />;
@@ -24,7 +26,12 @@ export default function FacilityDetailScreen() {
     <View style={styles.wrap}>
       <ScrollView contentContainerStyle={styles.scroll}>
         <View style={styles.imageWrap}>
-          <Image source={{ uri: f.imageUrl }} style={styles.image} contentFit="cover" />
+          <Image
+            source={{ uri: imgFailed ? resolveFacilityImage(null) : resolveFacilityImage(f.imageUrl) }}
+            style={styles.image}
+            contentFit="cover"
+            onError={() => setImgFailed(true)}
+          />
           <BackButton style={styles.backBtn} />
         </View>
         <View style={styles.body}>
@@ -88,7 +95,7 @@ const styles = StyleSheet.create({
   desc: { color: theme.colors.text, lineHeight: 21, marginTop: 8 },
   h: { color: theme.colors.text, fontWeight: '800', fontSize: 16, marginTop: 14 },
   row: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 6 },
-  chip: { backgroundColor: 'rgba(56,189,248,0.15)', paddingHorizontal: 12, paddingVertical: 6, borderRadius: 999 },
+  chip: { backgroundColor: 'rgba(2,132,199,0.10)', paddingHorizontal: 12, paddingVertical: 6, borderRadius: 999 },
   chipText: { color: theme.colors.accent, fontWeight: '700', textTransform: 'capitalize' },
   chipGhost: { backgroundColor: theme.colors.surface, borderWidth: 1, borderColor: theme.colors.border },
   chipGhostText: { color: theme.colors.text, fontWeight: '600' },
@@ -96,7 +103,7 @@ const styles = StyleSheet.create({
   courtName: { color: theme.colors.text, fontWeight: '800' },
   courtMeta: { color: theme.colors.muted, fontSize: 12, textTransform: 'capitalize' },
   price: { color: theme.colors.primary, fontWeight: '800' },
-  footer: { position: 'absolute', bottom: 0, left: 0, right: 0, padding: 16, backgroundColor: 'rgba(11,18,32,0.92)' },
+  footer: { position: 'absolute', bottom: 0, left: 0, right: 0, padding: 16, backgroundColor: 'rgba(255,255,255,0.96)', borderTopWidth: 1, borderTopColor: theme.colors.border },
   cta: { borderRadius: 14, padding: 16, alignItems: 'center' },
   ctaText: { color: '#fff', fontWeight: '800', fontSize: 16 },
 });

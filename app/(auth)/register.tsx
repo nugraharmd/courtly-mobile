@@ -71,7 +71,7 @@ export default function RegisterScreen() {
 const styles = StyleSheet.create({
   wrap: { flex: 1, backgroundColor: theme.colors.bg, paddingTop: 64 },
   header: { paddingHorizontal: 24, marginBottom: 8 },
-  logo: { color: '#fff', fontSize: 34, fontWeight: '900' },
+  logo: { color: theme.colors.primaryDark, fontSize: 34, fontWeight: '900' },
   tagline: { color: theme.colors.muted, marginTop: 4 },
   form: { padding: 20 },
   label: { color: theme.colors.text, fontWeight: '700', marginTop: 10 },

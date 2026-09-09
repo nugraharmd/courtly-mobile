@@ -29,7 +29,7 @@ export default function LoginScreen() {
 
   return (
     <View style={styles.wrap}>
-      <LinearGradient colors={['#15803D', '#0B1220']} style={styles.hero}>
+      <LinearGradient colors={[theme.colors.primary, theme.colors.primaryDark]} style={styles.hero}>
         <Text style={styles.logo}>Courtly</Text>
         <Text style={styles.tagline}>Book padel, tennis & more in seconds.</Text>
       </LinearGradient>

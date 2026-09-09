@@ -1,20 +1,30 @@
 export const theme = {
   colors: {
-    bg: '#0B1220',
-    surface: '#111C33',
-    card: '#16233F',
-    border: 'rgba(255,255,255,0.08)',
-    text: '#F4F7FF',
-    muted: '#9AA7C2',
-    primary: '#22C55E',
+    bg: '#F4F6FB',
+    surface: '#FFFFFF',
+    card: '#FFFFFF',
+    border: '#E2E8F0',
+    text: '#0F172A',
+    muted: '#64748B',
+    primary: '#16A34A',
     primaryDark: '#15803D',
-    accent: '#38BDF8',
-    danger: '#F87171',
-    warning: '#FBBF24',
-    success: '#34D399',
+    accent: '#0284C7',
+    danger: '#DC2626',
+    warning: '#D97706',
+    success: '#16A34A',
   },
   radius: { sm: 8, md: 14, lg: 20 },
 } as const;
+
+/** Online fallback image used when a facility photo is missing or fails to load. */
+export const FACILITY_FALLBACK_IMAGE =
+  'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=800&q=60';
+
+/** Resolve a possibly-empty remote image URL to a guaranteed-loadable one. */
+export function resolveFacilityImage(uri: string | null | undefined): string {
+  if (typeof uri === 'string' && uri.trim() !== '') return uri;
+  return FACILITY_FALLBACK_IMAGE;
+}
 
 export function formatIDR(n: number): string {
   return 'Rp' + Math.round(n).toLocaleString('id-ID');
