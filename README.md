@@ -29,7 +29,9 @@ Courtly is a mobile application built with React Native + Expo + TypeScript for 
 
 ## Build / Download
 
-EAS build: `https://expo.dev/accounts/nugraharmd/projects/courtly-mobile-fmxbpbvintvhnzuxkzkj/builds/e1488631-7f0c-4577-b891-4ff1f8292b65`  
+EAS build:
+- (v1): `https://expo.dev/accounts/nugraharmd/projects/courtly-mobile-fmxbpbvintvhnzuxkzkj/builds/e1488631-7f0c-4577-b891-4ff1f8292b65`  
+- (v2): `https://expo.dev/accounts/nugraharmd/projects/courtly-mobile-fmxbpbvintvhnzuxkzkj/builds/b1c5ce69-7700-4344-b86f-0812d0be6794`  
 
 ## Project Setup
 
