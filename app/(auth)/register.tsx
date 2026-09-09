@@ -6,12 +6,13 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Link } from 'expo-router';
 import * as Haptics from 'expo-haptics';
 import { useAuthStore } from '../../src/store/auth-store';
+import { PasswordField, passwordSchema } from '../../src/components/PasswordField';
 import { theme } from '../../src/utils';
 
 const schema = z.object({
   name: z.string().min(2, 'Enter your name'),
   email: z.string().email('Enter a valid email'),
-  password: z.string().min(8, 'Minimum 8 characters').regex(/[A-Z]/, 'Needs an uppercase letter').regex(/[0-9]/, 'Needs a number'),
+  password: passwordSchema,
 });
 
 type Form = z.infer<typeof schema>;
@@ -48,8 +49,9 @@ export default function RegisterScreen() {
         {errors.email ? <Text style={styles.err}>{errors.email.message}</Text> : null}
 
         <Text style={styles.label}>Password</Text>
+        <Text style={styles.hint}>Min 6 chars with a letter, a number & a special character.</Text>
         <Controller control={control} name="password" render={({ field: { onChange, value } }) => (
-          <TextInput style={styles.input} placeholder="Password123!" placeholderTextColor={theme.colors.muted} secureTextEntry value={value} onChangeText={onChange} />
+          <PasswordField value={value} onChangeText={onChange} placeholder="Password1!" />
         )} />
         {errors.password ? <Text style={styles.err}>{errors.password.message}</Text> : null}
         {error ? <Text style={styles.err}>{error}</Text> : null}
@@ -75,6 +77,7 @@ const styles = StyleSheet.create({
   tagline: { color: theme.colors.muted, marginTop: 4 },
   form: { padding: 20 },
   label: { color: theme.colors.text, fontWeight: '700', marginTop: 10 },
+  hint: { color: theme.colors.muted, fontSize: 12, marginTop: 2 },
   input: { backgroundColor: theme.colors.surface, color: theme.colors.text, borderRadius: theme.radius.md, padding: 14, marginTop: 6, borderWidth: 1, borderColor: theme.colors.border },
   err: { color: theme.colors.danger, marginTop: 4 },
   btnWrap: { marginTop: 18 },

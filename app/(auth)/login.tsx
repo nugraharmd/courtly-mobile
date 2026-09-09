@@ -6,11 +6,12 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Link } from 'expo-router';
 import * as Haptics from 'expo-haptics';
 import { useAuthStore } from '../../src/store/auth-store';
+import { PasswordField, passwordSchema } from '../../src/components/PasswordField';
 import { theme } from '../../src/utils';
 
 const schema = z.object({
   email: z.string().email('Enter a valid email'),
-  password: z.string().min(6, 'Minimum 6 characters'),
+  password: passwordSchema,
 });
 
 type Form = z.infer<typeof schema>;
@@ -53,10 +54,7 @@ export default function LoginScreen() {
         <Controller
           control={control} name="password"
           render={({ field: { onChange, value } }) => (
-            <TextInput
-              style={styles.input} placeholder="••••••••" placeholderTextColor={theme.colors.muted}
-              secureTextEntry value={value} onChangeText={onChange}
-            />
+            <PasswordField value={value} onChangeText={onChange} />
           )}
         />
         {errors.password ? <Text style={styles.err}>{errors.password.message}</Text> : null}
